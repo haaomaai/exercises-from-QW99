@@ -1,0 +1,93 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mycommand}
+
+\newcommand\hmmax{0}	% default 3, Increase the capacity of fonts
+\newcommand\bmmax{0}	% default 4, Increase the capacity of fonts...
+\RequirePackage{bm}			% Bolface + other functionalities
+
+%Modification of default commands
+
+\newcommand{\tf}{\textbf}
+
+\newcommand{\LRG}{\ensuremath{\Leftrightarrow}}
+
+\newcommand{\impl}{\ensuremath{\Leftarrow}}
+
+% Well-known algebraic structures
+
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}}
+
+
+% Algebra
+
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\rank}{\operatorname{Rank}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Isom}{\operatorname{Isom}}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+
+
+
+% Analysis
+
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\Real}{\mathop{}\!\mathrm{Re}}
+\newcommand{\Imag}{\mathop{}\!\mathrm{Im}}
+\newcommand{\champ}[1]{\ensuremath{\frac{\partial}{\partial #1}}}
+\newcommand{\norm}[1]{\ensuremath{\| #1 \|}}
+\newcommand{\normL}[2]{\ensuremath{\| #2 \|_{L^{#1}}}}
+\newcommand{\normLs}[3]{\ensuremath{\| #3 \|_{L^{#1}, #2}}}
+
+
+% General things...
+
+\newcommand{\mes}{\operatorname{vol}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+
+% Categorical Terms (in my view)
+
+\newcommand{\Obj}{\operatorname{Ob}}	
+
+% Homological Algebra
+
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{CoKer}}
+\newcommand{\Image}{\operatorname{Im}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Tor}{\operatorname{Tor}}
+
+
+% Geometry
+
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Res}{\operatorname{Res}}
+
+
+% Groups
+
+\newcommand{\Gal}{\operatorname{Gal}}
+
+
+%Environments
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{corollary}{Corollary}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{exercise}{Excercise}[section]
+

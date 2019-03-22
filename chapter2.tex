@@ -1,0 +1,193 @@
+
+\documentclass[
+    %	draftmark = true,
+    %   colors = true,
+    %	colors = false,
+    %	coverpage = coverpage.tex,
+    %	coverpage = coverpage.pdf,
+    %	fontsetup = font-setup-open.tex,
+    %	fontsetup = font-setup-HEP.tex,
+    %	titlesetup = titles-setup.tex
+    ]{article}
+    \usepackage[nonamelimits]{amsmath}
+    \usepackage{amstext}
+    \usepackage{amsthm} 
+    \usepackage{amssymb}
+    \usepackage{cite}
+    \usepackage{geometry}
+    \usepackage{graphicx}
+    \usepackage{mathrsfs}
+    \usepackage{array}
+    \usepackage{mycommand}	
+
+ 
+
+    \begin{document}
+
+    \title{}
+    \author{M. Hao}
+    \date{\today}
+    %\maketitle
+
+    %\tableofcontents
+
+    \section{Exercises of \S 2.2}
+    \begin{exercise}[The du Bois-Reymond Lemma]
+        Let $f$ be a continuous function on $[a,b]$ such that 
+        \[\int f\phi=0\]
+        for any $\psi\in\mathscr C_0^\infty((a,b))$. Then $f$ is identically zero.
+    \end{exercise}
+    \begin{proof}
+        Taking real and imaginary parts we may assume $f$ real when $\phi$ is taken real. 
+        If $f(x_0)\neq0$ we can find a non-negative $\psi\in\mathscr C_0^\infty$ with $\psi(x_0)\neq 0$ and support so close to $x_0$ that $f\psi$ has constant sign, 
+        which contradicts to the fact that its integral is 0.
+    \end{proof}
+
+    \begin{exercise}[Leibniz's Formula, a Generalization]
+        The goal of this exercse is to prove the formula
+        \[P(x,\partial)(uv)=\sum_\alpha\frac1{\alpha!}\partial^\alpha uP^{(\alpha)}(x,\partial)v.\]
+        Let $P$ be a linear differential operator with smooth coefficients. Prve that
+
+        (1) $P(x,\xi+\eta)=\sum_\alpha \frac1{\alpha!}\xi^\alpha P^{(\alpha)}(x,\eta);$
+
+        (2) $P(x,\partial)(uv)=\sum_\alpha\partial u\cdot R_\alpha(x,\partial)v,$
+        where $R_\alpha$'s are linear differential operators with smooth coefficients;
+
+        (3) $P(x,\partial)e^{\langle x,\eta\rangle}=P(x,\eta)e^{\langle x,\eta\rangle};$
+
+        (4) $R_\alpha=\frac1{\alpha!}P^{(\alpha)}(x,\partial).$
+    \end{exercise}
+    \begin{proof}
+        We write $P=\sum_\alpha a_\alpha(x)\partial^\alpha$. 
+        $P$ defines a polynomial in $\xi$ by $P(x,\xi):=e^{-\langle x,\xi\rangle}Pe^{\langle x,\xi\rangle}=\sum_\alpha a_\alpha(x)\xi^\alpha$.
+        
+        Since the polynomial $P(x,\xi)$ is analytic in $\xi$, we have by Taylor's theorem 
+        \[P(x,\xi+\eta)=\sum_\alpha \frac1{\alpha!}\xi^\alpha P^{(\alpha)}(x,\eta).\]
+
+        The identity (2) comes after expansion and rewriting of the differentials.
+
+        Note that $\partial^\alpha e^{\langle x,\eta\rangle}=\eta^\alpha e^{\langle x,\eta\rangle}$, we have
+        \[\sum_\alpha a_\alpha(x)\partial^\alpha e^{\langle x,\eta\rangle}=\sum_\alpha a_\alpha(x)\eta^\alpha e^{\langle x,\eta\rangle}\]
+        and hence $P(x,\partial)e^{\langle x,\eta\rangle}=P(x,\eta)e^{\langle x,\eta\rangle}$.
+
+        For (4), note that $L:u\mapsto P(uv)$ is a linear differential operator. We have $L(x,\xi)=e^{-\langle x,\xi\rangle}Le^{\langle x,\xi\rangle}=e^{-\langle x,\xi\rangle}P(e^{\langle x,\xi\rangle}v)$. 
+        Note that 
+        \[e^{-\langle x,\xi\rangle}\partial^\beta v\partial^\alpha e^{\langle x,\xi\rangle}=\xi^\alpha\partial^\beta v,\]
+        we have by Leibniz's formula
+        \[e^{-\langle x,\xi\rangle}\partial^\alpha(e^{\langle x,\xi\rangle}v)=\sum_{\beta+\gamma=\alpha}\frac{\alpha!}{\beta!\gamma!}\xi^\alpha\partial^\beta v=(\xi+\partial)^\alpha v\]
+        and therefore $L(x,\xi)=P(x,\xi+\partial)v=\sum_\alpha \frac1{\alpha!}\partial^\alpha vP^{(\alpha)}(x,\xi),$ which gives
+        \[P(uv)=Lu=L(x,\partial)u=\sum_\alpha \frac1{\alpha!}\partial^\alpha vP^{(\alpha)}(x,\partial)u.\]
+    \end{proof}
+     
+
+
+    \begin{exercise}
+        Calculate $\Delta(uv)$ and $\Delta^2(uv)$, and prove that
+        \[e^{-\langle x,\xi\rangle}P(ue^{\langle x,\xi\rangle})=P(x,\xi+\partial)u.\]
+    \end{exercise}
+    \begin{proof}
+        The identity is proven in the preceeding exercise.
+
+        $\Delta(uv)=2\partial_iu\partial_iv+\partial_i^2u\cdot v+u\cdot\partial_i^2v.$
+    
+        $\Delta^2(uv)=\Delta(\Delta(uv))=2\Delta u\Delta v+\Delta^2u\cdot v+u\cdot\Delta^2v+...$
+    \end{proof}
+
+    \begin{exercise}
+        Let $f\in L^1$, prove that 
+        \[\lim_{\epsilon\to0}\|f_\epsilon-f\|_{L^1}=0.\]
+    \end{exercise}
+    \begin{proof}
+        Note that 
+        \[f_\epsilon-f=\int[f(x-\epsilon y)-f(x)]\phi(y)\dif y.\]
+        Minkovskii's inequality gives
+        \[\|f_\epsilon-f\|_{L^1}\le\int\|f_{-\epsilon y}-f\|_{L^1}|\phi(y)|\dif y,\]
+        where $f_{-\epsilon y}$ is the translation of $f$ by $\epsilon y$ to the right.
+
+        For each $y$, $\|f_{-\epsilon y}-f\|_{L^1}$ tends to zero as $\epsilon\to0$\footnote{The case where $f$ is uniformly continuous is simple and the general case follows from approximating $f$ with uniformly continuous functions.} 
+        and is bounded by $2\|f\|_{L^1}$, the desired result then follows from the dominated convergence theorem. 
+    \end{proof}
+
+
+    \begin{exercise}
+        Let $\phi\in\mathscr C_0^\infty$ with $\int \phi=1$, and $v$ be continuous. Define 
+        \[u(x,t)=\int v(x-ty)\phi(y)\dif y.\]
+        Prove that 
+
+        (1) When $t>0$
+        \[\partial_{x_i}(t^k u(x,t))=t^{k-1}\int v(x-ty)\partial_{y_i}\phi(y)\dif y;\]
+        \[\partial_t(t^ku(x,t))=t^{k-1}\int v(x-ty)[(k-n)\phi(y)-\sum_i y_i\partial_{y_i}\phi(y)]\dif y;\]
+
+        (2) As $t\to0^+$, 
+        \[\partial_t^j(t^ku(x,t))\to 0, j<k;\]
+        \[\partial_t^k(t^ku(x,t))\to k!v(x).\]
+    \end{exercise}
+    \begin{proof}
+        By a change of variable we have 
+        \[t^ku(x,t)=t^k|t|^{-n}\int v(y)\phi(\frac{x-y}t)\dif y.\]
+        Also notice that the integrand is bounded, hence differentiation commutes with integration. We have by direct calculation
+        \[\partial_{x_i}(t^k u(x,t))=t^{k-1}\int v(x-ty)\partial_{y_i}\phi(y)\dif y;\]
+        \[\partial_t(t^ku(x,t))=t^{k-1}\int v(x-ty)[(k-n)\phi(y)-\sum_i y_i\partial_{y_i}\phi(y)]\dif y;\]
+
+        Since $u(x,t)\to v(x)$ as $t\to0$, (2) follows from Leibniz's formula.
+    \end{proof}
+
+
+    \begin{exercise}
+        Let $\{\phi_\epsilon\}_\epsilon$ be an approximation to the identity and $f_\epsilon(x)=\int \phi_\epsilon(x-y)\dif y.$ Prove that 
+        \[|\partial^\alpha f_\epsilon|\le C(\alpha,n)\epsilon^{-|\alpha|}.\]
+    \end{exercise}
+
+    \begin{proof}
+        Notice that
+        \[f_\epsilon(x)=\int\phi_\epsilon(x-y)\dif y=\epsilon^{-n}\int\phi(\frac{x-y}\epsilon)\dif y,\]
+        and therefore $\partial^\alpha f_\epsilon=\epsilon^{-n}\epsilon^{-|\alpha|}\int\partial^\alpha\phi(\frac{x-y}\epsilon)\dif y$.
+
+        The desired inequality holds since $\phi$ is a fixed function and $\int\partial^\alpha\phi(\frac{x-y}\epsilon)\dif y$ is always bounded for each $\alpha$.
+    \end{proof}
+
+
+    \begin{exercise}
+        We define $H_a=a^{-1}1_{[0,a]}$. Prove that $u*H_a\in\mathscr C^{k+1}$ if $u\in\mathscr C^k$.
+    \end{exercise}
+    \begin{proof}
+        We have by definition 
+        \[u*H_a(x)=\frac1a\int u(x-y)1_{[0,a]}(y)\dif y=\frac1a\int_0^au(x-y)\dif y=a^{-1}\int_{x-a}^xu.\]
+        And the assertion follows from the fundamental theorem of integration.
+    \end{proof}
+
+
+    \begin{exercise}
+        The goal of this exercise is to give another proof of the theorem for partition of the unity.
+
+        (1) Let $\{X_\alpha\}$ be an open covering of the compact set $U$. 
+        There exist a finite number of $K_i\subset\subset X_i$ such that 
+        $\{K_i\}_i$ is an open coveing of $U$.
+
+        (2) Let $\phi\in\mathscr C_0^\infty$. There is for each $i$ a $\phi_i\in\mathscr C_0^\infty$ such that $0\le\phi_i\le1$, $\phi_i\equiv1$ on $K_i$ and $\phi_i\equiv0$ outside $X_i$.
+    \end{exercise}
+    \begin{proof}
+    For (1), let $X_i^\epsilon$ be the set of points in $X_i$ with distance from $\RR^n\setminus X_i$ larger than $\epsilon$. Therefore $X_i^\epsilon\subset\subset X_i$. 
+    
+    We claim $U\subset \bigcup_1^NX_i^\epsilon$ if $\epsilon$ is small enough while $X_1,...,X_N$ s a finite subcovering of $U$. Assume otherwise, for each $\epsilon>0$ there exists 
+    $x_\epsilon\in U\setminus\bigcup_1^NX_i^\epsilon$. $\{x_\epsilon\}$ has a limit point $x$ as $\epsilon\to0$ since $U$ is compact. 
+    However $x\in\bigcup_1^NX_i$ then, which contradicts to our assumption that $X_1,...,X_N$ covers $U$.
+
+    For (2), we choose $K_1,...,K_N$ relatively compact in $X_i$ so that $\Supp\phi\subset\bigcup_1^NK_i$.  
+    Then we choose $\psi_i\in\mathscr C_0^\infty(X_i)$ with $0\le\psi_i\le1$ and $\psi_i\equiv1$ on $K_i$. 
+   
+    Let $\phi_1=\phi\psi_1,\phi_2=\phi\psi_2(1-\psi_1),...,\psi_N=\phi\psi_N(1-\psi_1)\cdot...\cdot(1-\psi_{N-1}).$
+    
+    Then the functions $\phi_i$ satisfy the desired properties since $\sum_1^N\phi_i-\phi=-\phi\prod_1^N(1-\psi_i)=0.$
+    \end{proof}
+
+
+
+\section{Exercises of \S 2.3}
+
+
+
+
+
+
+    \end{document}
